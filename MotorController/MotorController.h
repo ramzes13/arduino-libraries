@@ -8,10 +8,12 @@
 class MotorController
 {
 public:
-  MotorController(int pin);
+  MotorController(int forwardPin, int backwardPin);
+  void setSped(int speed, int direction);
 
 private:
-  int _pin;
+  int _forwardPin;
+  int _backwardPin;
 };
 
 #endif
