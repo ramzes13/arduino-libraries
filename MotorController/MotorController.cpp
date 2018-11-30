@@ -3,8 +3,8 @@
 
 MotorController::MotorController(int forwardPin, int backwardPin)
 {
-  _forwardPin = forwardPin;
-  _backwardPin = backwardPin;
+  this->_forwardPin = forwardPin;
+  this->_backwardPin = backwardPin;
 }
 
 void MotorController::setSped(int speed, int direction)

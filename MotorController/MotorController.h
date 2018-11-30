@@ -4,7 +4,6 @@
 
 #include "Arduino.h"
 
-#include "Arduino.h"
 class MotorController
 {
 public:
