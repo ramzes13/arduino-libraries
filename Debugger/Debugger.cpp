@@ -1,16 +1,14 @@
 #include <Debugger.h>
 
-#include "Arduino.h"
-
 Debugger::Debugger()
 {
 }
 
-void Debugger::log(String text)
+void Debugger::log(const String &s)
 {
   if (this->_debug)
   {
-    Serial.println(text);
+    Serial.println(s);
   }
 }
 
