@@ -21,7 +21,18 @@ void Car::setup(bool enableDebug)
 float Car::_calculateK(int speed, int directionAngle)
 {
   float kVal = (float)speed / (float)directionAngle;
-  this->_debugger.log((String)kVal);
+  int kSign = 1;
+  this->_debugger.log("_calculateK " + (String)kVal);
+  if (
+      directionAngle >= 0 && directionAngle < 45 ||
+      directionAngle >= 90 && directionAngle < 135 ||
+      directionAngle >= 180 && directionAngle < 225 ||
+      directionAngle >= 270 && directionAngle < 315)
+  {
+    int kSign = -1;
+  }
 
-  return kVal;
+  this->_debugger.log("_calculateK sign" + (String)kSign);
+
+  return kVal * kSign;
 }
