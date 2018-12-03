@@ -1,6 +1,8 @@
 #include "Arduino.h"
 #include "MotorController.h"
 
+MotorController::MotorController() {}
+
 MotorController::MotorController(int forwardPin, int backwardPin)
 {
   this->_forwardPin = forwardPin;
@@ -19,4 +21,10 @@ void MotorController::setSped(int speed, int direction)
     analogWrite(this->_forwardPin, 0);
     analogWrite(this->_backwardPin, speed);
   }
+}
+
+void MotorController::setup()
+{
+  pinMode(this->_forwardPin, OUTPUT);
+  pinMode(this->_backwardPin, OUTPUT);
 }
