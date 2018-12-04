@@ -1,14 +1,15 @@
 #include <Debugger.h>
 
-Debugger::Debugger()
+Debugger::Debugger(const String &prefix)
 {
+  this->_prefix = prefix;
 }
 
 void Debugger::log(const String &s)
 {
   if (this->_debug)
   {
-    Serial.println(s);
+    Serial.println(this->_prefix + s);
   }
 }
 

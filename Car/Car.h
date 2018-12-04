@@ -17,11 +17,13 @@ public:
   void enableDebug(bool debug);
 
 protected:
-  float _calculateK(int speed, int directionAngle);
+  float _calculateOneMotorSpeed(int speed, int directionAngle);
+  int _getCadran(int directionAngle);
+
   MotorController _rightMotor;
   MotorController _leftMotor;
 
-  Debugger _debugger;
+  Debugger *_debugger;
 };
 
 #endif
