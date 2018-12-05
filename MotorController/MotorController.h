@@ -10,7 +10,7 @@ class MotorController
 public:
   MotorController();
   MotorController(int forwardPin, int backwardPin, const String &name);
-  void setSped(int speed, int direction);
+  void setSped(int speed);
   void setup(bool enableDebug);
 
 private:

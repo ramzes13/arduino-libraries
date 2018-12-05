@@ -1,6 +1,6 @@
 #include "Car.h"
 
-Car::Car(MotorController leftMotor, MotorController rightMotor)
+Car::Car(MotorController *leftMotor, MotorController *rightMotor)
 {
   this->_leftMotor = leftMotor;
   this->_rightMotor = rightMotor;
@@ -16,20 +16,20 @@ void Car::move(int speed, int directionAngle)
   this->_debugger->log("move cadran: " + (String)cadran);
   if (cadran == 4)
   {
-    this->_leftMotor.setSped(calculatedSpeed, 1);
-    this->_rightMotor.setSped(speed, 1);
+    this->_leftMotor->setSped(calculatedSpeed);
+    this->_rightMotor->setSped(speed);
   }
   else if (cadran == 1)
   {
-    this->_leftMotor.setSped(speed, 1);
-    this->_rightMotor.setSped(calculatedSpeed, 1);
+    this->_leftMotor->setSped(speed);
+    this->_rightMotor->setSped(calculatedSpeed);
   }
 }
 
 void Car::setup(bool enableDebug)
 {
-  this->_leftMotor.setup(enableDebug);
-  this->_rightMotor.setup(enableDebug);
+  this->_leftMotor->setup(enableDebug);
+  this->_rightMotor->setup(enableDebug);
 
   this->_debugger->setDebug(enableDebug);
 }
@@ -40,7 +40,7 @@ float Car::_calculateOneMotorSpeed(int speed, int directionAngle)
 
   float calculatedSpeed = speed - (kVal * (float)directionAngle);
 
-  this->_debugger->log("_calculateOneMotorSpeed " + (String)calculatedSpeed);
+  // this->_debugger->log("_calculateOneMotorSpeed " + (String)calculatedSpeed);
   // int kSign = 1;
   // this->_debugger.log("_calculateK " + (String)kVal);
   // if (

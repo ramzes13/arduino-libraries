@@ -9,8 +9,8 @@
 class Car
 {
 public:
-  Car();
-  Car(MotorController leftMotor, MotorController rightMotor);
+
+  Car(MotorController *leftMotor, MotorController *rightMotor);
 
   void move(int speed, int directionAngle);
   void setup(bool enableDebug = false);
@@ -20,8 +20,8 @@ protected:
   float _calculateOneMotorSpeed(int speed, int directionAngle);
   int _getCadran(int directionAngle);
 
-  MotorController _rightMotor;
-  MotorController _leftMotor;
+  MotorController *_rightMotor;
+  MotorController *_leftMotor;
 
   Debugger *_debugger;
 };

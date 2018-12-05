@@ -12,9 +12,9 @@ MotorController::MotorController(int forwardPin, int backwardPin, const String &
   this->_debugger = new Debugger(this->_name);
 }
 
-void MotorController::setSped(int speed, int direction)
+void MotorController::setSped(int speed)
 {
-  if (direction > 0)
+  if (speed > 0)
   {
     this->_debugger->log("setSped forward: " + (String)speed);
     analogWrite(this->_forwardPin, speed);
@@ -24,14 +24,16 @@ void MotorController::setSped(int speed, int direction)
   {
     this->_debugger->log("setSped backward: " + (String)speed);
     analogWrite(this->_forwardPin, 0);
-    analogWrite(this->_backwardPin, speed);
+    analogWrite(this->_backwardPin, speed * -1);
   }
 }
 
 void MotorController::setup(bool enableDebug)
 {
+  this->_debugger->setDebug(enableDebug);
+  this->_debugger->log((String)this->_forwardPin);
+  this->_debugger->log((String)this->_backwardPin);
+
   pinMode(this->_forwardPin, OUTPUT);
   pinMode(this->_backwardPin, OUTPUT);
-
-  this->_debugger->setDebug(enableDebug);
 }
